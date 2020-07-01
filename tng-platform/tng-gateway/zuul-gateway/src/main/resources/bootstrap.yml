@@ -1,0 +1,23 @@
+server:
+  port: 9900
+  undertow:
+    buffer-size: 1024
+    direct-buffers: true
+
+tng:
+  nacos:
+    server-addr: 127.0.0.1:8848
+    #server-addr: 127.0.0.1:8848
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: ${tng.nacos.server-addr}
+        file-extension: yml
+        shared-dataids: common.yml
+        refreshable-dataids: common.yml
+      discovery:
+        server-addr: ${tng.nacos.server-addr}

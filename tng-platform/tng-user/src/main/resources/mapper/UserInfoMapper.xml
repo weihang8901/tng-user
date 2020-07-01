@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.central.user.mapper.UserInfoMapper">
+    <sql id="where">
+        <where>
+            t.is_del=0
+            <if test="p.id != null and p.id != ''">
+                and t.id like concat('%', #{p.id}, '%')
+            </if>
+            <if test="p.username != null and p.username != ''">
+                and t.username like concat('%', #{p.username}, '%')
+            </if>
+            <if test="p.tngUserName != null and p.tngUserName != ''">
+                and t.tng_user_name like concat('%', #{p.tngUserName}, '%')
+            </if>
+            <if test="p.enabled != null and p.enabled != ''">
+                and t.enabled = #{p.enabled}
+            </if>
+            <if test="p.type != null and p.type != ''">
+                and t.type = #{p.type}
+            </if>
+            <if test="p.searchKey != null and p.searchKey != '' and p.searchKey=='user_id'">
+                and t.id  like concat('%', #{p.searchValue}, '%')
+            </if>
+            <if test="p.searchKey != null and p.searchKey != '' and p.searchKey=='username'">
+                and t.username  like concat('%', #{p.searchValue}, '%')
+            </if>
+            <if test="p.searchKey != null and p.searchKey != '' and p.searchKey=='tngUserName'">
+                and t.tngUserName  like concat('%', #{p.searchValue}, '%')
+            </if>
+            <if test="p.searchKey != null and p.searchKey != '' and p.searchKey=='tngUserPhone'">
+                and t.tng_user_phone  like concat('%', #{p.searchValue}, '%')
+            </if>
+        </where>
+    </sql>
+
+    <select id="findList" resultType="com.central.common.model.UserInfo">
+        select * from tng_user t
+        <include refid="where" />
+        order by t.id desc
+    </select>
+    <insert id="saveList" parameterType="list" >
+        insert into tng_user (id,
+        username,
+        password,
+        enabled,
+        tng_user_name,
+        tng_user_sex,
+        tng_user_phone,
+        tng_User_openid,
+        tng_user_credentials,
+        tng_user_remark,
+        tng_user_type,
+        tng_user_synctime
+        )
+        VALUES
+        <foreach collection="list" item="user" separator=",">
+        (
+        #{user.id},
+        #{user.username},
+        #{user.password},
+        #{user.enabled},
+        #{user.tngUserName},
+        #{user.tngUserSex},
+        #{user.tngUserPhone},
+        #{user.tngUserOpenid},
+        #{user.tngUserCredentials},
+        #{user.tngUserRemark},
+        #{user.tngUserType},
+        #{user.tngUserSynctime}
+        )
+        </foreach>
+    </insert>
+</mapper>

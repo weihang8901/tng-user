@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.tng</groupId>
+        <artifactId>tng-platform</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>tng-commons</artifactId>
+    <description>通用组件</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>tng-log-spring-boot-starter</module>
+        <module>tng-common-core</module>
+        <module>tng-redis-spring-boot-starter</module>
+        <module>tng-common-spring-boot-starter</module>
+        <module>tng-db-spring-boot-starter</module>
+        <module>tng-swagger2-spring-boot-starter</module>
+        <module>tng-ribbon-spring-boot-starter</module>
+        <module>tng-auth-client-spring-boot-starter</module>
+        <module>tng-sentinel-spring-boot-starter</module>
+        <module>tng-elasticsearch-spring-boot-starter</module>
+    </modules>
+</project>

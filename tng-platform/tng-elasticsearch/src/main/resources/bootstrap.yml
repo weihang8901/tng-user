@@ -1,0 +1,21 @@
+server:
+  port: 8001
+
+tng:
+  nacos:
+    server-addr: 172.16.2.88:8848
+
+
+spring:
+  application:
+    name: tng-esearch
+
+  cloud:
+    nacos:
+      config:
+        server-addr: ${tng.nacos.server-addr}
+        file-extension: yml
+        shared-dataids: common.yml
+        refreshable-dataids: common.yml
+      discovery:
+        server-addr: ${tng.nacos.server-addr}

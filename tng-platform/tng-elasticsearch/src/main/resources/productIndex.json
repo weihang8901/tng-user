@@ -1,0 +1,14 @@
+{
+  "properties": {
+    "username": {
+      "type": "text",
+      "analyzer": "ik_max_word",
+      "search_analyzer": "ik_max_word"
+    },
+    "nickname": {
+      "type": "text",
+      "analyzer": "ik_max_word",
+      "search_analyzer": "ik_max_word"
+    }
+  }
+}
